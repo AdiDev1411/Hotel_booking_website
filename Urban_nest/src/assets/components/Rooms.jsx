@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../CSS/rooms.css";
-import superdelux from "../Images/superdelux.png";
-import delux from "../Images/delux.png";
+import superdelux from "../Images/Super-Deluxe.png";
+import delux from "../Images/Deluxe.png";
 import premium from "../Images/premium.png";
 import { Link } from 'react-router-dom';
 

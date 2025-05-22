@@ -1,0 +1,102 @@
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 40px;
+  background: #f5f8fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confirm-left {
+  flex: 1;
+}
+
+.confirm-left img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.confirm-right {
+  flex: 1.2;
+  background: white;
+  padding: 30px;
+  padding-left: 130px;
+  padding-right: 130px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.6s ease-out;
+}
+
+.confirm-right h2 {
+  color: #2e7d32;
+  font-size: 28px;
+  margin-bottom: 20px;
+  animation: popIn 0.5s ease;
+}
+
+.confirm-right p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.confirm-right ul {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.confirm-right ul li {
+  margin-bottom: 8px;
+}
+
+.confirm-right h3 {
+  color: #1e88e5;
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.confirm-right button {
+  margin-top: 25px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.confirm-right button:hover {
+  background-color: #1565c0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

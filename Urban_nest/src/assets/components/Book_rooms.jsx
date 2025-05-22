@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import "../CSS/BookingPage.css";
 import Footer from "./Footer";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+// const navigate = useNavigate();
 
+
+  
 
 const roomPrices = {
   "Super Deluxe": 5000,
@@ -22,6 +27,7 @@ const breakfastPrices = {
 const MAX_GUESTS_PER_ROOM = 4;
 
 const BookingPage = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     roomType: "",
     acOption: "",
@@ -90,58 +96,48 @@ const BookingPage = () => {
   ]);
 
 const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (guestLimitExceeded) {
-    alert(`Guest limit exceeded! Max ${formData.numRooms * MAX_GUESTS_PER_ROOM} guests allowed.`);
-    return;
-  }
-
-  const bookingData = {
-    ...formData,
-    totalAmount: totalBill.total,
-  };
-
-  try {
-    const response = await fetch("http://localhost:5002/api/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bookingData),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      alert(`✅ Booking Confirmed! Total Bill: ₹${totalBill.total}`);
-      console.log("Saved booking:", result);
-
-      // Optional: Reset form after submission
-      setFormData({
-        roomType: "",
-        acOption: "",
-        startDate: "",
-        endDate: "",
-        numRooms: 1,
-        breakfast: "",
-        guests: 1,
-        paymentMethod: "",
-        specialRequests: "",
-        name: "",
-        email: "",
-        phone: "",
-        idType: "",
-        idNumber: "",
-      });
-    } else {
-      alert("❌ Booking failed: " + result.message);
+    if (guestLimitExceeded) {
+      alert(`Guest limit exceeded! Max ${formData.numRooms * MAX_GUESTS_PER_ROOM} guests allowed.`);
+      return;
     }
-  } catch (error) {
-    console.error("Error submitting booking:", error);
-    alert("❌ Could not connect to server.");
-  }
-};
+
+    try {
+      const response = await fetch("http://localhost:5002/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          title: "🎉 Congratulations!",
+          text: "Thanks for booking with us!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        });
+
+      setTimeout(() => {
+  navigate("/confirmation", {
+    state: {
+      formData,
+      totalBill,
+      bookingId: `BOOK${Date.now()}`
+    }
+  });
+}, 3000);
+
+      } else {
+        Swal.fire("Oops!", "Something went wrong while booking.", "error");
+      }
+    } catch (error) {
+      console.error("Booking error:", error);
+      Swal.fire("Error", "Could not connect to the server.", "error");
+    }
+  };
 
 
   return (
