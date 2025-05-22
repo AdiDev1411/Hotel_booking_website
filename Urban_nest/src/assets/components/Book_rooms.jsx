@@ -89,16 +89,60 @@ const BookingPage = () => {
     formData.guests,
   ]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (guestLimitExceeded) {
-      alert(`Guest limit exceeded! Max ${formData.numRooms * MAX_GUESTS_PER_ROOM} guests allowed.`);
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log(formData);
-    alert(`Booking submitted! Total bill: ₹${totalBill.total}`);
+  if (guestLimitExceeded) {
+    alert(`Guest limit exceeded! Max ${formData.numRooms * MAX_GUESTS_PER_ROOM} guests allowed.`);
+    return;
+  }
+
+  const bookingData = {
+    ...formData,
+    totalAmount: totalBill.total,
   };
+
+  try {
+    const response = await fetch("http://localhost:5002/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert(`✅ Booking Confirmed! Total Bill: ₹${totalBill.total}`);
+      console.log("Saved booking:", result);
+
+      // Optional: Reset form after submission
+      setFormData({
+        roomType: "",
+        acOption: "",
+        startDate: "",
+        endDate: "",
+        numRooms: 1,
+        breakfast: "",
+        guests: 1,
+        paymentMethod: "",
+        specialRequests: "",
+        name: "",
+        email: "",
+        phone: "",
+        idType: "",
+        idNumber: "",
+      });
+    } else {
+      alert("❌ Booking failed: " + result.message);
+    }
+  } catch (error) {
+    console.error("Error submitting booking:", error);
+    alert("❌ Could not connect to server.");
+  }
+};
+
 
   return (
     <>
