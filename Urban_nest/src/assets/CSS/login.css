@@ -1,0 +1,212 @@
+@import url('./Main.css');
+     
+      
+      .main {
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .wrapper .form-box {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-box form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 60px;
+    }
+    .form-box h2 {
+        position: absolute;
+        top: -50px;
+        text-shadow: 2px 2px var(--primary-color);
+    }
+    .wrapper {
+        position: relative;
+        width: 400px;
+        height: 440px;
+        background: transparent;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 20px;
+        backdrop-filter: blur(4px);
+        box-shadow: 0px 0px 20px rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 300ms ease;
+        border: 4px solid black;
+      }
+      .wrapper:hover {
+        box-shadow: 0px 0px 25px var(--primary-color);
+        width: 420px;
+        height: 460px;
+      }
+      .form-box h2 {
+        font-size: 2em;
+      }
+      .input-box {
+        position: relative;
+        width: 273px;
+        height: 28px;
+        border-bottom: 2px solid rgb(0, 0, 0);
+        margin: 20px 0px;
+        /* background-color: antiquewhite; */
+      }
+      .input-box label {
+        position: absolute;
+        left: 5px;
+        top: 33%;
+        font-size: 1em;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: all 300ms ease;
+      }
+      .input-box input {
+        width: 85%;
+        outline: none;
+        background-color: transparent;
+        border: none;
+        padding-left: 5px;
+        color: rgb(0, 0, 0);
+      }
+      .input-box input:focus ~ label,
+      .input-box input:valid ~ label {
+        top: -7px;
+        font-size: 0.8em;
+        color: lightgray;
+      }
+      .user {
+        background-image: url("user.png");
+        /* background-color: white; */
+        background-size: 18px 18px;
+        height: 32px;
+        width: 32px;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 0;
+        background-position: center;
+        top: -3px;
+        transition: all 300ms ease;
+      }
+      .pass {
+        background-image: url("padlock\ \(2\).png");
+        background-size: 21px 21px;
+        height: 32px;
+        width: 32px;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 0;
+        top: -2px;
+        background-position: center;
+        transition: all 300ms ease;
+        /* background-color: aliceblue; */
+      }
+      .name:hover .user {
+        transform: translateY(-5px);
+        background-image: url("user__1_-removebg-preview\ \(1\).png");
+      }
+      .pa:hover .pass {
+        background-image: url("padlock__1_-removebg-preview.png");
+
+        transform: translateY(-5px);
+      }
+      .forgot-password a {
+        color: rgb(0, 0, 0);
+        position: relative;
+        text-decoration: none;
+      }
+      .forgot-password {
+        display: flex;
+        width: 100%; /* Ensure the container takes up the full width */
+        justify-content: right; /* Align text to the right */
+        margin: -3px;
+        margin-bottom: 30px;
+      }
+      .forgot-password a::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        background-color: var(--primary-color);
+        width: 0%;
+        bottom: -2px;
+        left: -6px;
+        border-radius: 3px;
+        transition: all 300ms ease;
+      }
+      .forgot-password a:hover::after {
+        width: 110%;
+      }
+      .icons {
+        display: flex;
+        gap: 3px;
+      }
+      .icons .icon1 {
+        background-image: url("google.png");
+      }
+      .icons .icon2 {
+        background-image: url("google.png");
+      }
+      .icons .icon3 {
+        background-image: url("google.png");
+      }
+      .icons .icon4 {
+        background-image: url("google.png");
+      }
+      .icons .icon5 {
+        background-image: url("google.png");
+      }
+      .icons .ic {
+        width: 28px;
+        height: 28px;
+        /* background-color: blue; */
+        background-size: 23px 23px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .btn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        border-radius: 50px;
+        border: 3px solid transparent;
+        transition: all 300ms ease;
+        width: 100%;
+      }
+      .btn:hover {
+        box-shadow: 0px 0px 15px var(--primary-color);
+        border-radius: 50px;
+        border: 3px solid rgb(112, 112, 112);
+      }
+      .person,
+      .lock {
+        position: absolute;
+        right: 0px;
+        top:0px;
+        font-size: 20px;
+      }
+      .name:hover .person,
+.pa:hover .lock {
+  color: var(--primary-color);
+  
+
+  transform: translateY(-5px); /* Moves the icon 5px upwards */
+  transition: all 300ms ease;
+}
+
+     
+    
+      
+      .re-sizing{
+        width: 100%;
+        height: 20px;
+      }
+      
+    

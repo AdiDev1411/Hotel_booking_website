@@ -1,0 +1,44 @@
+.facilities-container {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.facilities-container h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.amenity-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor:pointer;
+}
+
+.amenity-card:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+}
