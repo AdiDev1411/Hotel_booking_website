@@ -5,8 +5,10 @@ import "../CSS/ConfirmationPage.css";
 import superdelux from "../Images/Super-Deluxe.png";
 import delux from "../Images/Deluxe.png";
 import premium from "../Images/premium.png";
+import { useNavigate } from "react-router-dom"; 
 
 const ConfirmationPage = () => {
+   const navigate = useNavigate();
   const location = useLocation();
   const { formData, totalBill, bookingId } = location.state;
 
@@ -48,6 +50,10 @@ const ConfirmationPage = () => {
     doc.save(`${bookingId}.pdf`);
   };
 
+  const backtomain = ()=>{
+    navigate("/")
+  } 
+
   return (
     <div className="confirm-container">
       <div className="confirm-right">
@@ -55,21 +61,46 @@ const ConfirmationPage = () => {
         <img src={showimg} alt="Room" />
       </div>
         <h2>🎉 Congratulations! Booking Confirmed</h2>
-        <p><strong>Booking ID:</strong> {bookingId}</p>
-        <ul>
-          <li><strong>Name:</strong> {formData.name}</li>
-          <li><strong>Email:</strong> {formData.email}</li>
-          <li><strong>Phone:</strong> {formData.phone}</li>
-          <li><strong>Room Type:</strong> {formData.roomType}</li>
-          <li><strong>AC:</strong> {formData.acOption}</li>
-          <li><strong>Breakfast:</strong> {formData.breakfast}</li>
-          <li><strong>Guests:</strong> {formData.guests}</li>
-          <li><strong>Rooms:</strong> {formData.numRooms}</li>
-          <li><strong>Dates:</strong> {formData.startDate} to {formData.endDate}</li>
-          <li><strong>Payment Method:</strong> {formData.paymentMethod}</li>
-        </ul>
+        <p style={{ display: "flex", marginBottom: "4px" }}><strong style={{ width: "150px" }}>Booking ID:</strong> {bookingId}</p>
+       <ul style={{ listStyle: "none", padding: 0 }}>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Name:</strong> {formData.name}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Email:</strong> {formData.email}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Phone:</strong> {formData.phone}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Room Type:</strong> {formData.roomType}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>AC:</strong> {formData.acOption}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Breakfast:</strong> {formData.breakfast}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Guests:</strong> {formData.guests}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Rooms:</strong> {formData.numRooms}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Dates:</strong> {formData.startDate} to {formData.endDate}
+  </li>
+  <li style={{ display: "flex", marginBottom: "4px" }}>
+    <strong style={{ width: "150px" }}>Payment Method:</strong> {formData.paymentMethod}
+  </li>
+</ul>
+
         <h3>Total Amount: ₹{totalBill.total}</h3>
-        <button onClick={handleDownload}>📄 Save as PDF</button>
+        <div className="buttons-section">
+
+        <button onClick={handleDownload} className="download-btn">📄 Save as PDF</button>
+        <button onClick={backtomain} className="back-btn">🔙 Back To Main Page</button>
+        </div>
       </div>
     </div>
   );

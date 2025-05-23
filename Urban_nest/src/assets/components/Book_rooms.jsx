@@ -138,8 +138,6 @@ const handleSubmit = async (e) => {
       Swal.fire("Error", "Could not connect to the server.", "error");
     }
   };
-
-
   return (
     <>
     <div className="booking-container">

@@ -38,7 +38,7 @@ function Rooms() {
       ],
       price: "₹3,499 / night",
     },
-    Delux: {
+    Deluxe: {
       img: premium,
       description:
         "Affordable yet comfortable Delux room perfect for a relaxing stay, complete with all essential facilities.",

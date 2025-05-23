@@ -63,11 +63,17 @@
   font-size: 22px;
 }
 
+.buttons-section{
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+}
+
 .confirm-right button {
   margin-top: 25px;
   padding: 12px 24px;
   font-size: 16px;
-  background-color: #1e88e5;
+  
   color: white;
   border: none;
   border-radius: 8px;
@@ -75,8 +81,20 @@
   transition: background 0.3s;
 }
 
-.confirm-right button:hover {
+.download-btn{
+  background-color: #1e88e5;
+}
+.confirm-right .download-btn:hover {
   background-color: #1565c0;
+}
+
+.back-btn{
+  background-color: red;
+}
+
+.confirm-right .back-btn:hover{
+    background-color: rgb(172, 0, 0);
+
 }
 
 @keyframes slideIn {
