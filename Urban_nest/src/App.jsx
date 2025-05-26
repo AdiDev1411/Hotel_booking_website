@@ -5,6 +5,8 @@ import Login from './assets/components/Login';
 import './App.css';
 import Book_rooms from './assets/components/Book_rooms';
 import ConfirmationPage from './assets/components/ConfirmationPage';
+import Explore from './assets/components/Explore';
+import Admin from './assets/components/Admin';
 function App() {
 
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/book-room" element = {<Book_rooms  />}/>
         <Route path="/confirmation" element={<ConfirmationPage />} />
+        <Route path="/Explore" element={<Explore />} />
+        <Route path='/Admin' element={<Admin />} />
       </Routes>
     </Router>
     </>

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 
 const buttonStyle = {
@@ -73,7 +75,7 @@ const dotStyle = {
 
 const ImageSlider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const navigate = useNavigate();
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
@@ -118,9 +120,15 @@ const ImageSlider = ({ slides }) => {
             }}
           >
             {index === currentIndex && (
+              
               <button
                 style={buttonStyle}
-                onClick={() => console.log(`Clicked on ${slide.title}`)}
+                onClick={() => {
+                  console.log(`Clicked on ${slide.title}`)
+                  navigate('/Explore');
+                }
+              
+                }
               >
                 {slide.buttonText || "Explore"}
               </button>

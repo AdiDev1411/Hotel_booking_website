@@ -1,6 +1,6 @@
 import React from "react";
 import "../CSS/about.css"; // Create this CSS file to style the page
-
+import hotelimg from '../Images/hotel.png'
 function AboutUs() {
   return (
 <>
@@ -18,7 +18,7 @@ function AboutUs() {
         </p>
       </div>
       <div className="about-image">
-        <img src="/images/hotel-about.jpg" alt="About Our Hotel" />
+        <img src={hotelimg} alt="About Our Hotel" />
       </div>
     </div>
 </>
