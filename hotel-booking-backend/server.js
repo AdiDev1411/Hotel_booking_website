@@ -18,7 +18,7 @@ app.use(cors({
   credentials: true
 }));
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(express.json()); // ✅ No need to repeat cors()
