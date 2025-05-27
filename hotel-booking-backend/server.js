@@ -7,14 +7,10 @@ const Booking = require("./models/Booking");
 
 const app = express(); // ✅ This should come before app.use
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://hotel-booking-website-1-j8sb.onrender.com"
-];
+
 
 // ✅ Only one CORS setup — no duplicates
 app.use(cors({
-  // origin: allowedOrigins,
   credentials: true
 }));
 
