@@ -7,11 +7,11 @@ import img1 from '../Images/img1.png';
 
 const IMAGESSLIDERS = () => {
   const slides = [
-  { url: img1, title: "beach", buttonText: "Expoler Now!!" },
-  { url: img2, title: "boat", buttonText: "Expoler Now!!" },
-  { url: img3, title: "forest", buttonText: "Expoler Now!!" },
-  { url: img4, title: "city", buttonText: "Expoler Now!!" },
-  { url: img5, title: "italy", buttonText: "Expoler Now!!" },
+  { url: 'https://ik.imagekit.io/Aditya14/Hotel_images/image11.jpg', title: "beach", buttonText: "Expoler Now!!" },
+  { url: 'https://ik.imagekit.io/Aditya14/Hotel_images/image12.jpg', title: "boat", buttonText: "Expoler Now!!" },
+  { url: 'https://ik.imagekit.io/Aditya14/Hotel_images/image13.jpg', title: "forest", buttonText: "Expoler Now!!" },
+  { url: 'https://ik.imagekit.io/Aditya14/Hotel_images/image14.jpg', title: "city", buttonText: "Expoler Now!!" },
+  { url: 'https://ik.imagekit.io/Aditya14/Hotel_images/image15.jpg', title: "italy", buttonText: "Expoler Now!!" },
 ];
 
   const containerStyles = {
