@@ -3,11 +3,6 @@ import "../CSS/BookingPage.css";
 import Footer from "./Footer";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-// const navigate = useNavigate();
-
-
-
-  
 
 const roomPrices = {
   "Super Deluxe": 5000,
@@ -28,7 +23,9 @@ const breakfastPrices = {
 const MAX_GUESTS_PER_ROOM = 4;
 
 const BookingPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false); // ✅ Added loading state
+
   const [formData, setFormData] = useState({
     roomType: "",
     acOption: "",
@@ -75,7 +72,6 @@ const BookingPage = () => {
 
   useEffect(() => {
     const days = calculateDays(formData.startDate, formData.endDate);
-
     const guestsAllowed = formData.numRooms * MAX_GUESTS_PER_ROOM;
     setGuestLimitExceeded(formData.guests > guestsAllowed);
 
@@ -96,13 +92,15 @@ const BookingPage = () => {
     formData.guests,
   ]);
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (guestLimitExceeded) {
       alert(`Guest limit exceeded! Max ${formData.numRooms * MAX_GUESTS_PER_ROOM} guests allowed.`);
       return;
     }
+
+    setLoading(true); // ✅ Start loading
 
     try {
       const response = await fetch("https://hotel-backend-1pk5.onrender.com/api/bookings", {
@@ -121,22 +119,23 @@ const handleSubmit = async (e) => {
           timerProgressBar: true,
         });
 
-      setTimeout(() => {
-  navigate("/confirmation", {
-    state: {
-      formData,
-      totalBill,
-      bookingId: `BOOK${Date.now()}`
-    }
-  });
-}, 3000);
-
+        setTimeout(() => {
+          navigate("/confirmation", {
+            state: {
+              formData,
+              totalBill,
+              bookingId: `BOOK${Date.now()}`,
+            },
+          });
+        }, 3000);
       } else {
         Swal.fire("Oops!", "Something went wrong while booking.", "error");
       }
     } catch (error) {
       console.error("Booking error:", error);
       Swal.fire("Error", "Could not connect to the server.", "error");
+    } finally {
+      setLoading(false); // ✅ End loading
     }
   };
   return (
@@ -298,9 +297,10 @@ const handleSubmit = async (e) => {
           </div>
         </div>
 
-        <button type="submit" className="submit-btn">
-          Confirm Booking
-        </button>
+        <button type="submit" className="submit-btn" disabled={loading}>
+  {loading ? "Booking..." : "Confirm Booking"}
+</button>
+
       </form>
     </div>
        <Footer />
